@@ -1,0 +1,37 @@
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Environment variables file (if not committed)
+.env
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Debugging and profiling files
+*.pid
+*.seed
+*.log
+*.prof
+*.map
+
+# Output of npm
+npm-debug.log
+
+# Yarn integrity file
+.yarn-integrity
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
