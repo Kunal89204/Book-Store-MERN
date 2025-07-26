@@ -20,10 +20,17 @@ router.get("/books", async (req, res) => {
 router.get("/books/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const books = await Book.findById(id);
+    const book = await Book.findById(id);
 
-    return res.status(200).json(books);
-  } catch (error) {}
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    return res.status(200).json(book);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
 });
 
 // Route for updating the book
@@ -57,12 +64,13 @@ router.delete("/book/:id", async (req, res) => {
     const result = await Book.findByIdAndDelete(id);
 
     if (!result) {
-      console.log(error);
+      return res.status(404).json({ message: "Book not found" });
     }
 
-    return res.json({ message: "Done" });
+    return res.json({ message: "Book deleted successfully" });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
@@ -71,34 +79,28 @@ router.post("/books", async (req, res) => {
   try {
     // Check if all required fields are provided
     if (
-      !req.body.productName ||
-      !req.body.productDescription ||
-      !req.body.price ||
-      !req.body.discountedPrice ||
-      !req.body.productImage ||
-      !req.body.variedImages ||
-      !req.body.addToCart
+      !req.body.title ||
+      !req.body.author ||
+      !req.body.publishYear
     ) {
-      return res.status(400).send("All fields are required");
+      return res.status(400).send({
+        message: "Send all required fields: title, author, publishYear",
+      });
     }
 
-    // Create a new product object
-    const newProduct = {
-      productName: req.body.productName,
-      productDescription: req.body.productDescription,
-      price: req.body.price,
-      discountedPrice: req.body.discountedPrice,
-      productImage: req.body.productImage,
-      variedImages: req.body.variedImages,
-      addToCart: req.body.addToCart,
+    // Create a new book object
+    const newBook = {
+      title: req.body.title,
+      author: req.body.author,
+      publishYear: req.body.publishYear,
     };
 
-    // Create the product in the database
-    const product = await Product.create(newProduct);
+    // Create the book in the database
+    const book = await Book.create(newBook);
 
-    return res.status(201).send(product);
+    return res.status(201).send(book);
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.error("Error creating book:", error);
     return res.status(500).send("Internal Server Error");
   }
 });

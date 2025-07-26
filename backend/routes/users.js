@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-let url = 'mongodb+srv://root:Kunal892004@cluster0.nvano9w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-mongoose.connect(url);
+
+mongoose.connect("mongodb://127.0.0.1:27017/Books-Store-MERN");
 
 const bookSchema = mongoose.Schema(
   {
