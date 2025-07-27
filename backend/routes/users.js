@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/Books-Store-MERN");
+mongoose.connect("mongodb+srv://kunalkhandelwal108:db123@cluster0.shjtqzn.mongodb.net/Books-Store-MERN");
 
 const bookSchema = mongoose.Schema(
   {
