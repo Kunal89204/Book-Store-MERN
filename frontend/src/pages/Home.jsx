@@ -10,7 +10,7 @@ const HomePage = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch('http://localhost:3000/books');
+      const response = await fetch('https://book-store-mern-1vrh.onrender.com/books');
       if (!response.ok) {
         throw new Error('Failed to fetch books');
       }
@@ -23,7 +23,7 @@ const HomePage = () => {
 
   const handleDeleteBook = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/book/${id}`, {
+      const response = await fetch(`https://book-store-mern-1vrh.onrender.com/book/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

@@ -21,13 +21,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Use the cors middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://book-store-mern-1vrh.onrender.com', 'https://book-store-mern-indol.vercel.app', "*"],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}));
 
-// {
-//   origin: 'https://book-store-mern-1vrh.onrender.com',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type'],
-// }
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

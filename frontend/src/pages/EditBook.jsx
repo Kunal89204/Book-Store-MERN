@@ -13,7 +13,7 @@ const EditBook = () => {
 
   const fetchBook = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/books/${id}`);
+      const response = await fetch(`https://book-store-mern-1vrh.onrender.com/books/${id}`);
       if (!response.ok) {
         throw new Error('Failed to fetch book');
       }
@@ -30,7 +30,7 @@ const EditBook = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3000/book/${id}`, {
+      const response = await fetch(`https://book-store-mern-1vrh.onrender.com/book/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

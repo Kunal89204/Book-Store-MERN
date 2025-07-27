@@ -9,7 +9,7 @@ const CreateBooks = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/books", {
+      const response = await fetch("https://book-store-mern-1vrh.onrender.com/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
