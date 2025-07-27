@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 // {
-//   origin: 'http://localhost:3000',
+//   origin: 'https://book-store-mern-1vrh.onrender.com',
 //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 //   allowedHeaders: ['Content-Type'],
 // }
